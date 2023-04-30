@@ -1,3 +1,6 @@
+import 'package:app_video_conferencing/screens/home_screen.dart';
+import 'package:app_video_conferencing/utils/colours.dart';
+import 'package:app_video_conferencing/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +14,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Scaffold(),
+      debugShowCheckedModeBanner: false,
+      title: 'Video Conference',
+      theme:
+          ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/home':(context) => const HomeScreen(),
+      },
+      home: const LoginScreen(),
     );
+    
   }
 }
