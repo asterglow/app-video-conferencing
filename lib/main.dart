@@ -1,3 +1,4 @@
+import 'package:app_video_conferencing/resources/auth_methods.dart';
 import 'package:app_video_conferencing/screens/home_screen.dart';
 import 'package:app_video_conferencing/utils/colours.dart';
 import 'package:app_video_conferencing/screens/login_page.dart';
@@ -23,10 +24,22 @@ class MyApp extends StatelessWidget {
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
       routes: {
         '/login': (context) => const LoginScreen(),
-        '/home':(context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
       },
-      home: const LoginScreen(),
+      home: StreamBuilder(
+        stream: AuthMethods().authChanges,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasData){
+            return const HomeScreen();
+          }
+          return const LoginScreen();
+        },
+      ),
     );
-    
   }
 }
