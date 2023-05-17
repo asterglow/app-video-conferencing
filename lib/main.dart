@@ -1,7 +1,7 @@
 import 'package:app_video_conferencing/resources/auth_methods.dart';
 import 'package:app_video_conferencing/screens/home_screen.dart';
 import 'package:app_video_conferencing/utils/colours.dart';
-import 'package:app_video_conferencing/screens/login_page.dart';
+import 'package:app_video_conferencing/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
